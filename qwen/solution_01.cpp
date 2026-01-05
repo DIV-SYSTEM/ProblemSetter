@@ -5,17 +5,16 @@ int main() {
     int n;
     long long K;
     cin >> n >> K;
-
     vector<long long> a(n);
     for (int i = 0; i < n; i++) cin >> a[i];
 
     int ans = 1;
-    for (int l = 0; l < n; l++) {
+    for (int i = 0; i < n; i++) {
         long long cost = 0;
-        for (int r = l + 1; r < n; r++) {
-            cost += llabs(a[r] - a[r - 1]);
+        for (int j = i + 1; j < n; j++) {
+            cost += llabs(a[j] - a[j - 1]);
             if (cost <= K)
-                ans = max(ans, r - l + 1);
+                ans = max(ans, j - i + 1);
         }
     }
     cout << ans << "\n";
